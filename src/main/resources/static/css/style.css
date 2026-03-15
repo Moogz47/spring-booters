@@ -1,0 +1,150 @@
+body {
+    background:
+        radial-gradient(circle at top left, rgba(255, 0, 60, 0.12), transparent 30%),
+        radial-gradient(circle at top right, rgba(255, 80, 80, 0.10), transparent 28%),
+        linear-gradient(135deg, #ffffff 0%, #f8f9fb 100%);
+    color: #111111;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+}
+
+.navbar {
+    background: linear-gradient(90deg, #8b0000, #c1121f, #ff3b3b) !important;
+    box-shadow: 0 8px 20px rgba(193, 18, 31, 0.25);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.navbar-brand {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.navbar .btn-outline-light {
+    border: 1px solid rgba(255,255,255,0.75);
+    color: white;
+    border-radius: 999px;
+    padding: 0.45rem 1rem;
+    transition: all 0.25s ease;
+}
+
+.navbar .btn-outline-light:hover {
+    background-color: white;
+    color: #c1121f;
+    transform: translateY(-1px);
+}
+
+h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: #b3001b;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+p, label, td, th, input, select, button, a {
+    font-family: 'Inter', sans-serif;
+}
+
+.container {
+    animation: fadeInUp 0.5s ease;
+}
+
+.hero-panel,
+.content-panel,
+.form-panel {
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(193, 18, 31, 0.12);
+    border-radius: 22px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    backdrop-filter: blur(6px);
+}
+
+.btn-primary,
+.btn-success {
+    background: linear-gradient(90deg, #b3001b, #e31837);
+    border: none;
+    border-radius: 999px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    padding: 0.6rem 1.2rem;
+    box-shadow: 0 8px 16px rgba(227, 24, 55, 0.2);
+    transition: all 0.25s ease;
+}
+
+.btn-primary:hover,
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 22px rgba(227, 24, 55, 0.28);
+    background: linear-gradient(90deg, #8b0000, #c1121f);
+}
+
+.btn-secondary {
+    border-radius: 999px;
+}
+
+.table {
+    overflow: hidden;
+    border-radius: 18px;
+    background: white;
+}
+
+.table thead th {
+    background: linear-gradient(90deg, #8b0000, #c1121f);
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+}
+
+.table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(255, 59, 59, 0.06);
+    transform: scale(1.003);
+}
+
+.form-control,
+.form-select {
+    border-radius: 14px;
+    border: 1px solid #d9d9d9;
+    padding: 0.75rem 0.95rem;
+    box-shadow: none;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #c1121f;
+    box-shadow: 0 0 0 0.22rem rgba(193, 18, 31, 0.2);
+}
+
+.text-danger {
+    font-weight: 600;
+    margin-top: 0.35rem;
+}
+
+.accent-line {
+    width: 90px;
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #8b0000, #ff3b3b);
+    margin: 0.8rem 0 1.4rem 0;
+    box-shadow: 0 0 14px rgba(255, 59, 59, 0.4);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
