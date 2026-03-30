@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -72,6 +73,24 @@ public class HomeController {
         model.addAttribute("brands", new String[]{"Nike", "Adidas", "Puma", "Under Armour"});
         model.addAttribute("categories", new String[]{"Equipment", "Clothing", "Supplements"});
         return "product-form";
+    }
+
+    @GetMapping("/products/edit/{id}")
+    public String showEditForm(@PathVariable Long id, Model model) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Product not found"));
+
+        model.addAttribute("product", product);
+        model.addAttribute("brands", new String[]{"Nike", "Adidas", "Puma", "Under Armour"});
+        model.addAttribute("categories", new String[]{"Equipment", "Clothing", "Supplements"});
+
+        return "product-form";
+    }
+
+    @GetMapping("/products/delete/{id}")
+    public String deleteProduct(@PathVariable Long id) {
+        productRepository.deleteById(id);
+        return "redirect:/products";
     }
 
     @PostMapping("/products")
