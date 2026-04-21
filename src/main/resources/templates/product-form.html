@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
-
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark">
@@ -40,11 +39,16 @@
             <a th:href="@{/products}" class="btn btn-secondary btn-sm mb-3">
                 <i class="bi bi-arrow-left me-1"></i>Back to Products
             </a>
-            <h1 class="page-title"><i class="bi bi-plus-circle me-2" style="font-size:1.3rem"></i>Add Product</h1>
+            <h1 class="page-title">
+                <i class="bi bi-plus-circle me-2" style="font-size:1.3rem"></i>
+                <span th:text="${product.id != null} ? 'Edit Product' : 'Add Product'"></span>
+            </h1>
             <div class="accent-line"></div>
         </div>
 
         <form th:action="@{/products}" th:object="${product}" method="post">
+            <input type="hidden" th:field="*{id}">
+
             <div class="mb-3">
                 <label class="form-label">Product Name</label>
                 <input type="text" th:field="*{name}" class="form-control" placeholder="e.g. Dumbbell Set">
@@ -87,7 +91,8 @@
 
             <div class="d-flex gap-2 mt-2">
                 <button type="submit" class="btn btn-primary">
-                    <i class="bi bi-check-lg me-1"></i>Save Product
+                    <i class="bi bi-check-lg me-1"></i>
+                    <span th:text="${product.id != null} ? 'Update Product' : 'Save Product'"></span>
                 </button>
                 <a th:href="@{/products}" class="btn btn-secondary">Cancel</a>
             </div>

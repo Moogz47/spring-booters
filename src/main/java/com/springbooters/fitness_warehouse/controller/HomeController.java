@@ -2,9 +2,7 @@ package com.springbooters.fitness_warehouse.controller;
 
 import com.springbooters.fitness_warehouse.model.Product;
 import com.springbooters.fitness_warehouse.repository.ProductRepository;
-
 import jakarta.validation.Valid;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -38,23 +36,23 @@ public class HomeController {
 
     @GetMapping("/products")
     public String products(
-        @RequestParam(defaultValue = "") String brand,
-        @RequestParam(defaultValue = "") String category,
-        @RequestParam(defaultValue = "name") String sortField,
-        @RequestParam(defaultValue = "asc") String sortDir,
-        @RequestParam(defaultValue = "0") int page,
-        Model model) {
+            @RequestParam(defaultValue = "") String brand,
+            @RequestParam(defaultValue = "") String category,
+            @RequestParam(defaultValue = "name") String sortField,
+            @RequestParam(defaultValue = "asc") String sortDir,
+            @RequestParam(defaultValue = "0") int page,
+            Model model) {
 
         Sort sort = sortDir.equalsIgnoreCase("desc")
-            ? Sort.by(sortField).descending()
-            : Sort.by(sortField).ascending();
+                ? Sort.by(sortField).descending()
+                : Sort.by(sortField).ascending();
 
         Page<Product> productPage = productRepository
-            .findByBrandContainingIgnoreCaseAndCategoryContainingIgnoreCase(
-                    brand,
-                    category,
-                    PageRequest.of(page, 5, sort)
-            );
+                .findByBrandContainingIgnoreCaseAndCategoryContainingIgnoreCase(
+                        brand,
+                        category,
+                        PageRequest.of(page, 5, sort)
+                );
 
         model.addAttribute("products", productPage.getContent());
         model.addAttribute("currentPage", page);
@@ -83,7 +81,6 @@ public class HomeController {
         model.addAttribute("product", product);
         model.addAttribute("brands", new String[]{"Nike", "Adidas", "Puma", "Under Armour"});
         model.addAttribute("categories", new String[]{"Equipment", "Clothing", "Supplements"});
-
         return "product-form";
     }
 
@@ -95,8 +92,8 @@ public class HomeController {
 
     @PostMapping("/products")
     public String saveProduct(@Valid @ModelAttribute Product product,
-                          BindingResult bindingResult,
-                          Model model) {
+                              BindingResult bindingResult,
+                              Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("brands", new String[]{"Nike", "Adidas", "Puma", "Under Armour"});
             model.addAttribute("categories", new String[]{"Equipment", "Clothing", "Supplements"});
